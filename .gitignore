@@ -1,2 +1,5 @@
 # PHP vendors
 vendor
+
+# Environment variables
+.env

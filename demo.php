@@ -13,7 +13,7 @@ $dotenv->load();
 
 $config = [
     'discord' =>[
-        'token' => "your token",
+        'token' => $_ENV['DISCORD_BOT_TOKEN'],
         'options' => [],
     ],
 ];

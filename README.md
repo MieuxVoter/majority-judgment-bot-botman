@@ -10,6 +10,24 @@ A bot used to create majority-judgment polls that works with many clients such a
     cd majority-judgment-bot-botman
     composer install
 
+### Configuration
+
+Copy the config file example:
+
+    cp .env.example .env
+
+Then in the `.env` file, replace environment variables values by their corresponding content:
+
+#### `DISCORD_BOT_TOKEN`
+
+Bot token for Discord. To get it, copy the token in your Discord application page under *Bot* tab, in *Build-A-Bot* section (see [Create bots/Discord](#discord)).
+
+## Run
+
+    php ./demo.php
+
+The bot should be connected and answer every time a user says `hello`.
+
 ## Create bots
 
 ### Discord
@@ -24,9 +42,3 @@ A bot used to create majority-judgment polls that works with many clients such a
     - check the permissions you want in the `Bot Permissions` section,
     - then copy the generated authentication url.
 3. Paste the authentication url in your web browser, then confirm the dialog popup to attach the bot to a Discord server.
-
-### Test your bot
-
-In `demo.php`, replace `your token` by the actual token that you can copy in your Discord application page under *Bot* tab, in *Build-A-Bot* section.
-
-Then run the script: the Discord bot should be connected and answer every time a user says "hello".

@@ -1,0 +1,39 @@
+<?php
+
+$config = [
+    'discord' =>[
+        'token' => "your token",
+        'options' => [
+            'disableClones' => true,
+            'disableEveryone' => true,
+            'fetchAllMembers' => false,
+            'messageCache' => true,
+            'messageCacheLifetime' => 600,
+            'messageSweepInterval' => 600,
+            'presenceCache' => false,
+            'userSweepInterval' => 600,
+            'ws.disabledEvents' => [],
+        ],
+    ],
+];
+
+// Load the driver(s) you want to use
+DriverManager::loadDriver(\JABirchall\BotMan\Drivers\Discord\DiscordDriver::class);
+$loop = Factory::create();
+$botman = BotManFactory::createForDiscord($config, $loop);
+
+// Give the bot something to listen for.
+$botman->hears('hello', function (BotMan $bot) {
+    $bot->reply('Hello yourself.');
+});
+
+// start a convosation
+$botman->hears('How are you', function (BotMan $bot) {
+    $bot->ask("I'm a bot I have no feelings, How about you?", function (Answer $answer) use ($bot) {
+        $bot->reply("Thats great, you said: ". $answer->getText());
+    });
+});
+
+// Start listening
+$botman->listen();
+$loop->run();
